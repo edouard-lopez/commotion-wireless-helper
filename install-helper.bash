@@ -24,6 +24,9 @@ function getPackage() {
   wget "${args[@]}" "$url"
 }
 
+function clean() {
+  rm "$outputDir"/*.deb
+}
 
 # @description check for missing dependencies and install
 # @return    void
@@ -39,6 +42,7 @@ function install() {
 function run-installer() {
   getPackage "$outputDir"
   install "$outputDir"
+  # clean "$outputDir"
 }
 
 run-installer;
