@@ -25,6 +25,14 @@ function getPackage() {
 }
 
 
+# @description check for missing dependencies and install
+# @return    void
+function install() {
+  dpkg -i "$outputDir"/*.deb
+  # resolve dependencies and try again
+  apt-get install -f
+  dpkg -i "$outputDir"/*.deb
+}
 
 # @description step to complete installation
 # @return    void
