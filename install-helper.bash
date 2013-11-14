@@ -9,12 +9,12 @@
 
 
 url="http://downloads.commotionwireless.net/linux/"
+outputDir="${1:-commotion-wireless}"
 
 # @description Fetch package from official website
 # @param    $1|outputDir  directory to store fetched packages
 # @return    void
 function getPackage() {
-  outputDir="${1:-commotion-wireless}"
   args=(
     --no-verbose
     -P "$outputDir" --no-directories --no-host-directories
@@ -29,7 +29,8 @@ function getPackage() {
 # @description step to complete installation
 # @return    void
 function run-installer() {
-  getPackage
+  getPackage "$outputDir"
+  install "$outputDir"
 }
 
 run-installer;
