@@ -10,6 +10,10 @@
 
 url="http://downloads.commotionwireless.net/linux/"
 
+# @description Fetch package from official website
+# @param    $1|outputDir  directory to store fetched packages
+# @return    void
+function getPackage() {
   outputDir="${1:-commotion-wireless}"
   args=(
     --no-verbose
@@ -18,3 +22,14 @@ url="http://downloads.commotionwireless.net/linux/"
   )
 
   wget "${args[@]}" "$url"
+}
+
+
+
+# @description step to complete installation
+# @return    void
+function run-installer() {
+  getPackage
+}
+
+run-installer;
