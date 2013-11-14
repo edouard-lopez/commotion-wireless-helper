@@ -30,8 +30,8 @@ function getPackage() {
 function install() {
   dpkg -i "$outputDir"/*.deb
   # resolve dependencies and try again
-  apt-get install -f
-  dpkg -i "$outputDir"/*.deb
+  apt-get install -f && dpkg -i "$outputDir"/*.deb \
+    && printf '\n[i] Install sucessful\n' || printf '[!\n] Failed to install!\n'
 }
 
 # @description step to complete installation
